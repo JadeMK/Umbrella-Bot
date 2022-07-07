@@ -1,5 +1,13 @@
 import requests
 
+def bot_send(id):
+    token = ""
+    id = ""
+    message = "Rain alert!"
+    send = ""
+    responses = requests.get(send)
+    return responses.json()
+
 OWM_endpoint = "https://api.openweathermap.org/data/2.5/onecall"
 api_key = "Key here"
 
