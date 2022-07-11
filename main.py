@@ -1,15 +1,16 @@
 import requests
+import os
 
-def bot_send(id):
-    token = ""
-    id = ""
-    message = "Rain alert!"
-    send = ""
-    responses = requests.get(send)
-    return responses.json()
+# Telegram Bot
+def bot_message(chat_id):
+    token = os.environ.get("TELEGRAM_TOKEN")
+    message = "Hello World! (testing)"
+    send = "https://api.telegram.org/bot" + token + "/sendmessage?chat_id=" + chat_id + "&text=" + message
+    bot_response = requests.get(send)
+    return bot_response.json()
 
 OWM_endpoint = "https://api.openweathermap.org/data/2.5/onecall"
-api_key = "Key here"
+api_key = os.environ.get("OWM_API_KEY")
 
 # Geographical coordinates (lat: latitude, lon: longitude)
 params = {
@@ -31,3 +32,4 @@ for hour in weather_hour:
     # Codes below 700 means: rain, snow, drizzle or thunderstorm
     if condition_code < 700:
         # Send the umbrella reminder
+        pass
